@@ -1,10 +1,44 @@
-//todo implement generic state machine
-/*
-typedef struct{
-	int currentState;
-	int numStates;
-	int *states;
-	int numStateChanges;
-	int *validStateChanges; 
-}stateMachine;
-*/
+#include "stateMachine.h"
+
+//taken from https://prdeving.wordpress.com/2019/05/30/how-to-write-a-game-engine-in-pure-c-part-1-state-manager/
+
+
+int STATEMANAGER_init(NOTE_stateManager *statemanager){
+	statemanager -> capacity = 4;
+	statemanager -> stack = malloc(statemanager -> capacity * sizeof(NOTE_state));
+	statemanager -> top = -1;
+	return 0;
+}
+
+int STATEMANAGER_free(NOTE_stateManager *statemanager){
+	do{
+		STATEMANAGER_pop(statemanager);
+	}while(statemanager -> top > -1);
+	free(statemanager -> stack);
+}
+
+int STATEMANAGER_scale(NOTE_stateManager *statemanager){
+	statemanager -> capacity *= 2;
+	statemanager -> stack = realloc(statemanager -> stack, statemanager -> capacity * sizeof(NOTE_state);
+	return statemanager -> capacity;
+}
+
+int STATEMANAGER_push(NOTE_stateManager *statemanager, NOTE_state *state){
+	
+}
+
+int STATEMANAGER_pop(NOTE_stateManager *statemanager){
+	
+}
+
+NOTE_state *STATEMANAGER_top(NOTE_stateManager *statemanager){
+	
+}
+
+int STATEMANAGER_update(NOTE_stateManager *statemanager, float deltaTime){
+	
+}
+
+int STATEMANAGER_draw(NOTE_stateManager *statemanager, float deltaTime){
+	
+}
