@@ -14,7 +14,7 @@ typedef struct{
 }NOTE_state;
 
 typedef struct{
-	State **stack;
+	NOTE_state **stack;
 	int capacity;
 	int top;
 }NOTE_stateManager;

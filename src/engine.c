@@ -1,5 +1,5 @@
 #include "stateMachine.h"
-
+/*
 stateMachine gameState;
 enum engineStates{mainMenu, ingame};
 
@@ -14,4 +14,4 @@ void engine(){
 		break;
 	
 	}
-}
+} */
