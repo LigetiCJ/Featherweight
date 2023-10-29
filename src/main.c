@@ -38,7 +38,7 @@ float pyramidVerts[] = {
 
 int pyramidFaces[] = {
 	0,1,2,
-	2,3,1,
+	3,2,1,
 	0,2,3,
 	1,0,3
 };
@@ -123,9 +123,9 @@ int main(int argc, char **argv){
 	
 	int deltaTimeTarget = glGetUniformLocation(shaderProgram, "deltaTime");
 	
-	glClearColor(0.3f,0.2f,0.4f,1.0f);
+	glClearColor(0.0f,0.0f,0.0f,0.0f);
 
-	//glDisable(GL_CULL_FACE);
+	glDisable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
 	
 	///core loop
