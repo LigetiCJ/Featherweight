@@ -6,6 +6,7 @@ typedef struct{
 	int *faces;
 }NOTE_model;
 
+GLFWwindow* initGraphics();
 unsigned int makeShaderProgram(const char *vertexShaderFilename, const char* fragmentShaderFilename);
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 
