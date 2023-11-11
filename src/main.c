@@ -93,8 +93,10 @@ int main(int argc, char **argv){
 	glVertexAttribPointer(1,3,GL_FLOAT, GL_FALSE, 6*sizeof(float), (void*)(3*sizeof(float)));
 	glEnableVertexAttribArray(1);
 
+	glfwSwapInterval(1);
 	
 	float timeValue = glfwGetTime();
+	
 	
 	int deltaTimeTarget = glGetUniformLocation(shaderProgram, "deltaTime");
 	
@@ -103,9 +105,20 @@ int main(int argc, char **argv){
 	glDisable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
 	
+	
+	
+	float currentTime = 0.0f;
+	float previousTime = 0.0f;
+	float deltaTime = 0.0f;
+	
 	///core loop
 	while(!glfwWindowShouldClose(window)){
 		timeValue = glfwGetTime();
+		
+		previousTime = currentTime;
+		currentTime = glfwGetTime();
+		
+		deltaTime = currentTime-previousTime;
 		
 		processInput(window);
 		//processGame
@@ -118,6 +131,9 @@ int main(int argc, char **argv){
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glUniform1f(deltaTimeTarget, timeValue );
 
+
+		//replace this with on screen drawing of string
+		printf("%f\n", 1/deltaTime);
 		
 		glUseProgram(shaderProgram);		
 		glBindVertexArray(VAO);
