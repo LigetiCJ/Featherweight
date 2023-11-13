@@ -8,6 +8,7 @@
 #include "time.h"
 #include "cglm/cglm.h"
 #include "input.h"
+#include "math.h"
 
 int _width = 500;
 int _height = 500;
@@ -22,19 +23,28 @@ int shouldReload = 1;
 
 float *image;
 
-float verticies[] = {
-	//points            colors
-	-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
-	 0.5f, -0.5f, 0.3f, 0.0f, 1.0f, 0.0f,
-	 0.0f,  0.5f, 0.0f, 0.0f, 0.0f, 1.0f
+float rectVerts[] = {
+	//points            colors            UVs
+	 0.0f,  0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+	 0.0f,  1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
+	 1.0f,  0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+	 1.0f,  1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f
+};
+
+int rectFaces[] = {
+	0,1,2,
+	1,3,2
 };
 
 float pyramidVerts[] = {
-	-0.5f, -0.5f,  0.0f, 1.0f,1.0f,1.0f,
-	 0.5f, -0.5f,  0.0f, 0.0f,0.0f,1.0f,
-	 0.0f,  0.5f, -0.5f, 1.0f,0.0f,0.0f,
-	 0.0f,  0.5f,  0.5f, 0.0f,1.0f,0.0f,
+	//points             colors          UVs
+	-0.5f, -0.5f,  0.0f, 1.0f,1.0f,1.0f, 0.0f, 0.0f,
+	 0.5f, -0.5f,  0.0f, 0.0f,0.0f,1.0f, 0.0f, 1.0f,
+	 0.0f,  0.5f, -0.5f, 1.0f,0.0f,0.0f, 1.0f, 0.0f,
+	 0.0f,  0.5f,  0.5f, 0.0f,1.0f,0.0f, 1.0f, 1.0f
 };
+
+
 
 int pyramidFaces[] = {
 	0,1,2,
@@ -44,17 +54,23 @@ int pyramidFaces[] = {
 };
 
 
-void generateTestTexture(int size, float *imageOut){
-	imageOut = malloc(sizeof(float)*size*size*3);
-	
-	for(int i = 0; i < size*size; i++){
-		imageOut[i] = i*1.0f/size*size;
+void generateTestTexture(int size, float* imageOut ){
+	//fill the bits with color data
+	for(int i = 0; i < (3*size*size); i++){
+		//imageOut[i] = (0+i%3)*1.0f + (1+i%3)*0.0f + (2+i%3)*0.5f;
+		//imageOut[i] = 1.0f;
+		imageOut[i] = 1.0f*i / (size*size*3);
 	}
-	
-	
 }
 
 
+//make a struct that has pointer to verts, faces, and texture
+void newGraphicsObject(){
+	//make VAO
+	//make VBO
+	//make EBO
+	
+}
 
 int main(int argc, char **argv){
 	
@@ -86,12 +102,36 @@ int main(int argc, char **argv){
 	
 	
 	//sets offset and stride of first concept in the vertex array (verts)
-	glVertexAttribPointer(0,3,GL_FLOAT, GL_FALSE, 6*sizeof(float), (void*)0);
+	glVertexAttribPointer(0,3,GL_FLOAT, GL_FALSE, 8*sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 	
 	//sets offset and stride of second concept in the vertex array (colors)
-	glVertexAttribPointer(1,3,GL_FLOAT, GL_FALSE, 6*sizeof(float), (void*)(3*sizeof(float)));
+	glVertexAttribPointer(1,3,GL_FLOAT, GL_FALSE, 8*sizeof(float), (void*)(3*sizeof(float)));
 	glEnableVertexAttribArray(1);
+	
+	//sets offset and stride of third concept in the vertex array (UVs)
+	glVertexAttribPointer(2,2,GL_FLOAT, GL_FALSE, 8*sizeof(float), (void*)(6*sizeof(float)));
+	glEnableVertexAttribArray(2);
+	
+	//texture setup
+	int texSize = 256;
+	float *debugTex = malloc(sizeof(float)*texSize*texSize*3);;
+	generateTestTexture(texSize, debugTex);
+
+	
+	unsigned int tex;
+	glGenTextures(1, &tex);
+	glBindTexture(GL_TEXTURE_2D, tex);
+	
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	
+	
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texSize, texSize, 0, GL_RGB, GL_FLOAT, debugTex);
+	glGenerateMipmap(GL_TEXTURE_2D);
+	
 
 	glfwSwapInterval(1);
 	
@@ -100,25 +140,24 @@ int main(int argc, char **argv){
 	
 	int deltaTimeTarget = glGetUniformLocation(shaderProgram, "deltaTime");
 	
-	glClearColor(0.0f,0.0f,0.0f,0.0f);
+	glClearColor(0.0f,0.5f,0.0f,1.0f);
 
 	glDisable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
 	
 	
 	
-	float currentTime = 0.0f;
-	float previousTime = 0.0f;
-	float deltaTime = 0.0f;
+	//float currentTime = 0.0f;
+	//float previousTime = 0.0f;
+	//float deltaTime = 0.0f;
 	
 	///core loop
 	while(!glfwWindowShouldClose(window)){
 		timeValue = glfwGetTime();
 		
-		previousTime = currentTime;
-		currentTime = glfwGetTime();
-		
-		deltaTime = currentTime-previousTime;
+		//previousTime = currentTime;
+		//currentTime = glfwGetTime();
+		//deltaTime = currentTime-previousTime;
 		
 		processInput(window);
 		//processGame
@@ -133,9 +172,10 @@ int main(int argc, char **argv){
 
 
 		//replace this with on screen drawing of string
-		printf("%f\n", 1/deltaTime);
+		//printf("%f\n", 1/deltaTime);
 		
-		glUseProgram(shaderProgram);		
+		glUseProgram(shaderProgram);	
+		glBindTexture(GL_TEXTURE_2D, tex);
 		glBindVertexArray(VAO);
 		//glDrawArrays(GL_TRIANGLES, 0,6); //ONLY DRAWS ONE TRIANGLE
 		

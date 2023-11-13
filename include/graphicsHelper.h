@@ -2,6 +2,7 @@
 #define NOTE_GRAPHICSHELPER_H
 
 typedef struct{
+	int numVerts;
 	float *verts;
 	int *faces;
 }NOTE_model;

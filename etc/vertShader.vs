@@ -2,10 +2,13 @@
 
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aCol;
+layout (location = 2) in vec2 aTexCoord;
+
 
 uniform float deltaTime;
 
 out vec3 vertexColor;
+out vec2 TexCoord;
 
 void main(){
 	//do rotation around z axis
@@ -15,6 +18,7 @@ void main(){
 	
 
 	vertexColor = aCol;
-
+	TexCoord = aTexCoord;
+	
 	gl_Position = vec4(newX, aPos.y, newZ, 1.0);
 }
