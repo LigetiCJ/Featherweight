@@ -7,6 +7,7 @@ typedef struct{
 	void* data;
 }NOTE_event;
 
+
 void postMessage(NOTE_event event);
 void addListener(void (*listenerFunction)(NOTE_event));
 

@@ -35,7 +35,7 @@ const char* loadFile(const char* filename){
 }
 
 /*
-void loadModel(const char* filename, float *points, int *faces){
+void loadModel(const char* filename, NOTE_model){
 	FILE *readFile = fopen(filename, "r");
 	if(!readFile){
 		exit(23);
