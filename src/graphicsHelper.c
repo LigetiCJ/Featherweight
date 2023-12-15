@@ -8,11 +8,7 @@
 int success;
 char infoLog[512];
 
-typedef struct {
-	unsigned int VBO;
-	unsigned int VAO;
-	unsigned int shaderProgram;
-} note_graphicsContainer;
+
 
 
 GLFWwindow* initGraphics(int windowWidth, int windowHeight){
@@ -53,7 +49,10 @@ void framebuffer_size_callback(GLFWwindow *window, int width, int height){
 	
 }
 
+NOTE_graphicsContainer *createNewGraphicsContainer(){
+	return 0;
 
+}
 
 void checkShader(unsigned int shaderhandle){
 	printf("checking shader... ");

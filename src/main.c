@@ -81,7 +81,7 @@ int main(int argc, char **argv){
 	///
 	
 	//make the shader program
-	shaderProgram = makeShaderProgram("etc/vertShader.vs", "etc/fragShader.fs");
+	shaderProgram = makeShaderProgram("etc/vertShader.hlsl", "etc/fragShader.hlsl");
 	
 	//sets up the Vertex Attribute Object (VAO) that stores the configuration of an array for a model
 	unsigned int VAO;
