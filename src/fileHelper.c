@@ -7,6 +7,7 @@ const char* loadFile(const char* filename){
 
 	FILE * readFile = fopen(filename, "r");
 	if(!readFile){
+		printf("failed to load file:%s", filename);
 		exit(22);
 	}
 	

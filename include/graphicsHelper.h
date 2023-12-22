@@ -7,15 +7,20 @@ typedef struct{
 	int *faces;
 }NOTE_model;
 
-typedef struct {
-	unsigned int VBO;
+typedef struct{
 	unsigned int VAO;
-	unsigned int shaderProgram;
-} NOTE_graphicsContainer;
+	unsigned int VBO;
+	unsigned int EBO;
+	unsigned int TEX;
+
+}NOTE_bufferObjects;
+
 
 GLFWwindow* initGraphics();
 unsigned int makeShaderProgram(const char *vertexShaderFilename, const char* fragmentShaderFilename);
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
+void createBufferObjects(NOTE_bufferObjects *container, float *verts, int *faces );
+
 
 NOTE_graphicsContainer *createNewGraphicsContainer();
 
