@@ -14,8 +14,6 @@ void main(){
 	//do rotation around z axis
 	float newX = cos(deltaTime)*aPos.x - sin(deltaTime)*aPos.z;
 	float newZ = sin(deltaTime)*aPos.x + cos(deltaTime)*aPos.z;
-	
-	
 
 	vertexColor = aCol;
 	TexCoord = aTexCoord;

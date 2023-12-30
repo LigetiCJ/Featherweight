@@ -22,6 +22,6 @@ void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 void createBufferObjects(NOTE_bufferObjects *container, float *verts, int *faces );
 
 
-NOTE_graphicsContainer *createNewGraphicsContainer();
+void createNewGraphicsContainer(NOTE_bufferObjects *input, float *verts, int *faces);
 
 #endif

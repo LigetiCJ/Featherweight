@@ -11,7 +11,6 @@ char infoLog[512];
 
 
 
-
 GLFWwindow* initGraphics(int windowWidth, int windowHeight){
 	///initalize glfw
 	glfwInit();
@@ -43,39 +42,6 @@ GLFWwindow* initGraphics(int windowWidth, int windowHeight){
 	
 }
 
-void createBufferObjects(NOTE_bufferObjects *container, float *verts, int *faces ){
-	//sets up the Vertex Attribute Object (VAO) that stores the configuration of an array for a model
-	glGenVertexArrays(1, &container.VAO);
-	glBindVertexArray(container->VAO);
-	
-	//sets up the Vertex Buffer Object (VBO) that stores the actual vertex(and color) data for a model
-	glGenBuffers(1, &container.VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, container->VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(pyramidVerts), pyramidVerts, GL_STATIC_DRAW);
-	
-	//sets up the Element Buffer Object (EBO) that stores construction data for verts to faces
-	unsigned int EBO;
-	glGenBuffers(1, &EBO);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(pyramidFaces), pyramidFaces, GL_STATIC_DRAW);
-	
-	//move this to a different function
-}
-
-void setStrides(){
-	
-	//sets offset and stride of first concept in the vertex array (verts)
-	glVertexAttribPointer(0,3,GL_FLOAT, GL_FALSE, 8*sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-	
-	//sets offset and stride of second concept in the vertex array (colors)
-	glVertexAttribPointer(1,3,GL_FLOAT, GL_FALSE, 8*sizeof(float), (void*)(3*sizeof(float)));
-	glEnableVertexAttribArray(1);
-	
-	//sets offset and stride of third concept in the vertex array (UVs)
-	glVertexAttribPointer(2,2,GL_FLOAT, GL_FALSE, 8*sizeof(float), (void*)(6*sizeof(float)));
-	glEnableVertexAttribArray(2);
-}
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height){
 	printf("resized window, updating viewport\n");
@@ -83,9 +49,9 @@ void framebuffer_size_callback(GLFWwindow *window, int width, int height){
 	
 }
 
-NOTE_graphicsContainer *createNewGraphicsContainer(){
-	return 0;
-
+//NYI (make VAO, VBO, EBO)
+void createNewGraphicsContainer(NOTE_bufferObjects *input, float *verts, int *faces){
+	return;
 }
 
 void checkShader(unsigned int shaderhandle){

@@ -11,5 +11,4 @@ uniform vec4 deltaTime;
 
 void main(){
 	FragColor = texture(ourTexture, TexCoord);
-	//FragColor = vec4(vertexColor,1.0f);
 }
