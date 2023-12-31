@@ -7,6 +7,7 @@
 //struct for events
 typedef struct{
 	int eventID;
+	void *data;
 }NOTE_event;
 
 //listener function layout
