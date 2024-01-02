@@ -21,13 +21,6 @@ void NOTE_initEventManager(NOTE_eventManager *eventManager);
 void NOTE_subscribe(NOTE_eventManager *eventManager, NOTE_eventListener eventListener);
 void NOTE_postEvent(NOTE_eventManager *eventManager, NOTE_event event);
 
-static NOTE_eventManager playerInputEvent;
-static NOTE_eventManager playerMoveEvent;
-static NOTE_eventManager playerDamageEvent;
-static NOTE_eventManager playerPickUpEvent;
-static NOTE_eventManager playerCollideEvent;
-
-static NOTE_eventManager networkEvent;
 
 
 
