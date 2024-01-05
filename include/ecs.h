@@ -1,7 +1,17 @@
 #ifndef H_ECS
 #define H_ECS
 
-#define MAX_ENTITIES 1024
+#define MAX_ENTITIES 10
+
+typedef int entity;
+
+typedef enum{
+    NOTE_empty,
+    NOTE_shell,
+    NOTE_projectile,
+    NOTE_particle,
+    NOTE_world
+}NOTE_entityType;
 
 typedef struct{
     float posX;
@@ -24,20 +34,25 @@ typedef struct {
 }rotation;
 
 typedef struct{
-    void (*behavior)(entity);
+    void (*behavior)(entity target);
 }behavior;
 
-typedef int entity;
+typedef struct{
+    NOTE_entityType type;
+}type;
 
 //all components you can put on an entity
-static position positions[MAX_ENTITIES];
-static velocity velocities[MAX_ENTITIES];
-static health healths[MAX_ENTITIES];
-static rotation rotations[MAX_ENTITIES];
-static behavior behaviors[MAX_ENTITIES];
+
+position positions[MAX_ENTITIES];
+velocity velocities[MAX_ENTITIES];
+health healths[MAX_ENTITIES];
+rotation rotations[MAX_ENTITIES];
+behavior behaviors[MAX_ENTITIES];
+type types[MAX_ENTITIES];
 
 entity NOTE_requestNewEntity();
 void NOTE_freeEntity(entity target);
-
+void processBehavior();
+void processMovement();
 
 #endif
