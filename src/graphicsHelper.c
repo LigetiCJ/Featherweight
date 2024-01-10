@@ -114,3 +114,11 @@ void consoleLog(char *str){
 	//draw str as bitmap font to screen
 	//blit font to texture file
 }
+
+void NOTE_initBufferObject(NOTE_bufferObjects *target){
+	glGenVertexArrays(1, &target->VAO);
+
+	glGenBuffers(1, &target->VBO);
+	target->EBO;
+	
+}

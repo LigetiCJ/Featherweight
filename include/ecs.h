@@ -9,8 +9,7 @@ typedef enum{
     NOTE_empty,
     NOTE_shell,
     NOTE_projectile,
-    NOTE_particle,
-    NOTE_world
+    NOTE_particle
 }NOTE_entityType;
 
 typedef struct{

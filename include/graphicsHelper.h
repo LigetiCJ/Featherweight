@@ -24,4 +24,6 @@ void createBufferObjects(NOTE_bufferObjects *container, float *verts, int *faces
 
 void createNewGraphicsContainer(NOTE_bufferObjects *input, float *verts, int *faces);
 
+void NOTE_initBufferObject(NOTE_bufferObjects *target);
+
 #endif
