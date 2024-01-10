@@ -41,6 +41,7 @@
 *.su
 *.idb
 *.pdb
+config.ini
 
 # Kernel Module Compile Results
 *.mod*

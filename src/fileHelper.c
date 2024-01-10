@@ -7,8 +7,8 @@ const char* loadFile(const char* filename){
 
 	FILE * readFile = fopen(filename, "r");
 	if(!readFile){
-		printf("failed to load file:%s", filename);
-		exit(22);
+		printf("failed to load file:%s\n", filename);
+		return -1;
 	}
 	
 	//find size of file
@@ -35,17 +35,10 @@ const char* loadFile(const char* filename){
 
 }
 
-/*
-void loadModel(const char* filename, NOTE_model){
-	FILE *readFile = fopen(filename, "r");
-	if(!readFile){
-		exit(23);
-	}
-	
-	int maxPoints = 512;
-	points = malloc(sizeof(float)*maxPoints);
-	faces = malloc(sizeof(int)*maxPoints);
-	
-	
-}*/
+void saveFile(const char* filename, const char* data){
+	FILE *writeFile = fopen(filename, "w");
+	fprintf(writeFile, "%s",data);
+	fclose(writeFile);
+
+}
 
