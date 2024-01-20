@@ -12,7 +12,7 @@ void initTexture(NOTE_texture *texture, int width, int height){
 
 
 
-void checker(NOTE_texture *texture){
+void checker(NOTE_texture *texture, int sideLength){
 
         for(int i = 0; i < texture->width * texture->height; i ++){
             

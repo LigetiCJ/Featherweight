@@ -119,6 +119,6 @@ void NOTE_initBufferObject(NOTE_bufferObjects *target){
 	glGenVertexArrays(1, &target->VAO);
 
 	glGenBuffers(1, &target->VBO);
-	target->EBO;
+	
 	
 }

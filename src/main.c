@@ -5,7 +5,11 @@
 #include "input.h"
 #include "stdlib.h"
 #include "event.h"
+#include "fileHelper.h"
 #include "textureGenerator.h"
+#include "ecs.h"
+#include "settings.h"
+
 
 void debugTexture(NOTE_texture *tex){
 	for(int i = 0; i < tex->width*tex->height*4; i++){
@@ -15,7 +19,7 @@ void debugTexture(NOTE_texture *tex){
 }
 
 
-float rect = {
+float rectVerts[] = {
 	// points           //UVs
 	 0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
 	 0.5f, -0.5f, 0.0f, 0.0f, 1.0f,
@@ -33,6 +37,8 @@ void extractConfig(const char *key, const char *config, int *container){
 	//find line with desired key
 	//string to int found key pair
 	//put int into address of container 
+
+
 
 }
 
@@ -57,7 +63,7 @@ int main(int argc, char **argv){
 	glfwInit();
 	GLFWwindow *window = glfwCreateWindow(640, 480, "projectN", 0, 0);
 	
-	debugTexture(&tex);
+	//debugTexture(&tex);
 
 	
 	///core loop (input, network, process, render)
@@ -65,7 +71,7 @@ int main(int argc, char **argv){
 		
 		glfwPollEvents();
 		processInput(window);
-		processBehavior();
+		//processBehavior();
 		//render
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
