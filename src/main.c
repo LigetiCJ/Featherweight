@@ -47,7 +47,7 @@ void loadConfig(){
 	const char* conf = loadFile("config.ini");
 	if(conf == -1){
 		printf("no config file exists, making a new one\n");
-		saveFile("config.ini", "EMPTY");
+		saveFile("config.ini", defaultSettings);
 	}
 	//parse config
 
