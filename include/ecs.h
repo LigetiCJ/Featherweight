@@ -15,11 +15,13 @@ typedef enum{
 typedef struct{
     float posX;
     float posY;
+    float posZ;
 }position;
 
 typedef struct{
     float velX;
     float velY;
+    float velZ;
 }velocity;
 
 typedef struct{
