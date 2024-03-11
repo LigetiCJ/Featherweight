@@ -1,0 +1,3 @@
+/home/Conner/Desktop/Featherweight/build/CMakeFiles/featherweight.dir
+/home/Conner/Desktop/Featherweight/build/CMakeFiles/edit_cache.dir
+/home/Conner/Desktop/Featherweight/build/CMakeFiles/rebuild_cache.dir

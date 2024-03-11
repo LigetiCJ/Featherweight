@@ -1,5 +1,9 @@
 {
     "files.associations": {
-        "ecs.h": "c"
-    }
+        "ecs.h": "c",
+        "filehelper.h": "c"
+    },
+    "C_Cpp.default.includePath": [
+        "include/"
+    ]
 }
