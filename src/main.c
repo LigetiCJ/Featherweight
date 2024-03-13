@@ -7,8 +7,11 @@
 #include "event.h"
 #include "fileHelper.h"
 #include "textureGenerator.h"
-#include "ecs.h"
 #include "settings.h"
+#include "camera.h"
+
+
+#define LOG(x) printf("LOG: %i\n", x)
 
 
 void debugTexture(NOTE_texture *tex){
@@ -45,9 +48,10 @@ void extractConfig(const char *key, const char *config, int *container){
 
 void loadConfig(){
 	const char* conf = loadFile("config.ini");
-	if(conf == -1){
+	if(conf == NULL){
 		printf("no config file exists, making a new one\n");
 		saveFile("config.ini", defaultSettings);
+		conf = defaultSettings;
 	}
 	//parse config
 
@@ -62,9 +66,6 @@ int main(int argc, char **argv){
 
 	glfwInit();
 	GLFWwindow *window = glfwCreateWindow(640, 480, "projectN", 0, 0);
-	
-	//debugTexture(&tex);
-
 	
 	///core loop (input, network, process, render)
 	while(!glfwWindowShouldClose(window)){

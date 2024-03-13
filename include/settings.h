@@ -7,7 +7,7 @@ const char defaultSettings[] =
 "right = d \n"
 "up = w \n"
 "down = s \n"
-"dodge = space";
+"dodge = space\n";
 
 int windowWidth = 0;
 int windowHeight = 0;

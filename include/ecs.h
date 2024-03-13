@@ -44,12 +44,12 @@ typedef struct{
 
 //all components you can put on an entity
 
-position positions[MAX_ENTITIES];
-velocity velocities[MAX_ENTITIES];
-health healths[MAX_ENTITIES];
-rotation rotations[MAX_ENTITIES];
-behavior behaviors[MAX_ENTITIES];
-type types[MAX_ENTITIES];
+extern position positions[];
+extern velocity velocities[];
+extern health healths[];
+extern rotation rotations[];
+extern behavior behaviors[];
+extern type types[];
 
 entity NOTE_requestNewEntity();
 void NOTE_freeEntity(entity target);

@@ -54,3 +54,4 @@ dkms.conf
 
 #misc files
 config.ini
+build/

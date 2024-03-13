@@ -1,8 +1,12 @@
 #include "ecs.h"
 #include "stdio.h"
 
-
-
+position positions[MAX_ENTITIES];
+velocity velocities[MAX_ENTITIES];
+health healths[MAX_ENTITIES];
+rotation rotations[MAX_ENTITIES];
+behavior behaviors[MAX_ENTITIES];
+ type types[MAX_ENTITIES];
 
 entity NOTE_requestNewEntity(){
     for(int i = 0; i < MAX_ENTITIES; i++){
