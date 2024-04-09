@@ -4,6 +4,7 @@
 int up, down, left, right, a, b, x, y, l, r, start, select;
 int shouldOpenConsole;
 
+//we can do better...
 void processInput(GLFWwindow *window){
 	//force quit
 	if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS && glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)

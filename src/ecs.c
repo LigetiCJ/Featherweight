@@ -6,8 +6,10 @@ velocity velocities[MAX_ENTITIES];
 health healths[MAX_ENTITIES];
 rotation rotations[MAX_ENTITIES];
 behavior behaviors[MAX_ENTITIES];
- type types[MAX_ENTITIES];
+type types[MAX_ENTITIES];
 
+
+//finds the first empty ECS slot 
 entity NOTE_requestNewEntity(){
     for(int i = 0; i < MAX_ENTITIES; i++){
         if(types[i].type == NOTE_empty){
@@ -17,10 +19,12 @@ entity NOTE_requestNewEntity(){
     return -1;
 }
 
+//marks entity as empty so you can reuse the slot in the ECS
 void NOTE_freeEntity(entity target){
     types[target].type = NOTE_empty; 
 }
 
+//loops through all ECS slots and updates position based on velocity
 void processMovement(){
     //handle movement processes here
     for(int i = 0; i < MAX_ENTITIES; i++){
@@ -32,6 +36,7 @@ void processMovement(){
     }
 }
 
+//loops through all ECS slots and processes behaviors
 void processBehavior(){
     for(int i = 0; i < MAX_ENTITIES; i++){
         //may be unsafe, check if behavior exist if issues arrise
