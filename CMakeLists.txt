@@ -31,6 +31,7 @@ set(SOURCES
     src/main.c 
     src/stateMachine.c 
     src/textureGenerator.c
+    src/math.c
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})

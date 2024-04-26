@@ -54,9 +54,9 @@ void loadConfig(){
 		conf = defaultSettings;
 	}
 	//parse config
+	//saveFile("config.ini",conf);
 
-
-	printf("%s", conf);
+	printf("Config loaded...\n %s", conf);
 }
 
 
