@@ -13,6 +13,8 @@
 
 #define LOG(x) printf("LOG: %i\n", x)
 
+int WINDOW_WIDTH = 640;
+int WINDOW_HEIGHT = 480;
 
 void debugTexture(NOTE_texture *tex){
 	for(int i = 0; i < tex->width*tex->height*4; i++){
@@ -65,7 +67,7 @@ int main(int argc, char **argv){
 
 
 	glfwInit();
-	GLFWwindow *window = glfwCreateWindow(640, 480, "projectN", 0, 0);
+	GLFWwindow *window = initGraphics(WINDOW_WIDTH, WINDOW_HEIGHT);
 	
 	///core loop (input, network, process, render)
 	while(!glfwWindowShouldClose(window)){

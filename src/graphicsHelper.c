@@ -18,8 +18,8 @@ GLFWwindow* initGraphics(int windowWidth, int windowHeight){
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	
-	glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
-	glfwWindowHint(GLFW_FLOATING, GLFW_TRUE);
+	//glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
+	//glfwWindowHint(GLFW_FLOATING, GLFW_TRUE);
 	
 	GLFWwindow* window = glfwCreateWindow(windowWidth,windowHeight, "Project", 0,0);
 	
