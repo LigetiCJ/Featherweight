@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.28.2)
 
+set(CMAKE_C_COMPILER gcc)
+
 #name the project
 project(featherweight C)
 
