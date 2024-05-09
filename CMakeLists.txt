@@ -1,14 +1,25 @@
 cmake_minimum_required(VERSION 3.28.2)
 
 set(CMAKE_C_COMPILER gcc)
+set(CMAKE_CXX_COMPILER g++)
+
+
 
 #name the project
 project(featherweight C)
 
+if(WIN32)
+    set(CMAKE_GENERATOR "MinGW Makefiles" CACHE INTERNAL "" FORCE)
+    set(CMAKE_MAKE_PROGRAM mingw32-make)
+    set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+endif()
+
+
 #find opengl
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
-find_package(GLEW REQUIRED)
+#find_package(glew REQUIRED)
+
 
 #add GLFW
 #add_subdirectory(/usr/include)
@@ -41,5 +52,10 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 
 #link libraries
 target_link_libraries(${PROJECT_NAME} glfw)
-target_link_libraries(${PROJECT_NAME} GLEW)
+if(WIN32)
+    target_link_libraries(${PROJECT_NAME} glew32)
+endif()
+if(LINUX)
+    target_link_libraries(${PROJECT_NAME} glew)
+endif()
 target_link_libraries(${PROJECT_NAME} OpenGL::GL)
