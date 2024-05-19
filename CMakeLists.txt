@@ -18,8 +18,13 @@ endif()
 #find opengl
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
-#find_package(glew REQUIRED)
 
+if(WIN32)
+    find_package(glew REQUIRED)
+endif()
+if(LINUX)
+    find_package(GLEW REQUIRED)
+endif()
 
 #add GLFW
 #add_subdirectory(/usr/include)
@@ -56,6 +61,6 @@ if(WIN32)
     target_link_libraries(${PROJECT_NAME} glew32)
 endif()
 if(LINUX)
-    target_link_libraries(${PROJECT_NAME} glew)
+    target_link_libraries(${PROJECT_NAME} GLEW)
 endif()
 target_link_libraries(${PROJECT_NAME} OpenGL::GL)

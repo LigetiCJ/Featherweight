@@ -41,6 +41,7 @@ grid layout has a pre-defined X by X equally spaced grid that you can add compon
 
 
 components have a size requirement (1x1, 1x4, 2x3, etc.)
+when drawing objects the component space can be transparent, translucent, frosted(glassy) or opaque0
 components have an image (tex2d from opengl)
 
 when adding a component to a grid you can define an X and Y position to the grid

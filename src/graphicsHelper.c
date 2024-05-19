@@ -79,8 +79,8 @@ void checkProgram(unsigned int programhandle){
 unsigned int makeShaderProgram(const char *vertexShaderFilename, const char* fragmentShaderFilename){
 	
 	//load shader files
-	const char *vertexShaderSource = loadFile(vertexShaderFilename);
-	const char *fragmentShaderSource = loadFile(fragmentShaderFilename);
+	const char *vertexShaderSource = loadTextFile(vertexShaderFilename);
+	const char *fragmentShaderSource = loadTextFile(fragmentShaderFilename);
 	
 	unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertexShader, 1, &vertexShaderSource, 0);

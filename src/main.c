@@ -49,7 +49,7 @@ void extractConfig(const char *key, const char *config, int *container){
 
 
 void loadConfig(){
-	const char* conf = loadFile("config.ini");
+	const char* conf = loadTextFile("config.ini");
 	if(conf == NULL){
 		printf("no config file exists, making a new one\n");
 		saveFile("config.ini", defaultSettings);
